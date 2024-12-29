@@ -14,16 +14,115 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String     @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String     @unique
   password  String
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-  level     Int      @default(1)
-  // UserCard  UserCard[]
-  // Match     Match[]
-  // Purchase  Purchase[]
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  level     Int        @default(1)
+  UserCard  UserCard[]
+  Match     Match[]
+  Purchase  Purchase[]
 
   @@map("users")
+}
+
+model Card {
+  id          String     @id @default(uuid())
+  categoryId  String     @map("category_id")
+  description String
+  image       String
+  weight      Int
+  shots       Int
+  isFree      Boolean    @map("is_free")
+  level       Int        @default(1)
+  deckId      String?    @map("deck_id")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  UserCard    UserCard[]
+  Category    Category   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  Deck        Deck?      @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  Pack        Pack?      @relation(fields: [packId], references: [id])
+  packId      String?    @map("pack_id")
+
+  @@map("cards")
+}
+
+model UserCard {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  cardId    String   @map("card_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  Deck      Deck?    @relation(fields: [deckId], references: [id])
+  deckId    String?  @map("deck_id")
+
+  @@unique([userId, cardId])
+  @@map("userCards")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  Card      Card[]
+
+  @@map("categories")
+}
+
+model Deck {
+  id        String     @id @default(uuid())
+  name      String
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  Card      Card[]
+  UserCard  UserCard[]
+  Purchase  Purchase[]
+
+  @@map("decks")
+}
+
+model Match {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  shots     Int      @default(0)
+  deckId    String   @map("deck_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("matches")
+}
+
+model Pack {
+  id        String     @id @default(uuid())
+  name      String
+  price     Float
+  quantity  Int
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  Card      Card[]
+  Purchase  Purchase[]
+
+  @@map("packs")
+}
+
+model Purchase {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  packId    String   @map("pack_id")
+  deckId    String   @map("deck_id")
+  status    String   @default("PENDING")
+  paymentId String   @unique @map("payment_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pack Pack @relation(fields: [packId], references: [id], onDelete: Cascade)
+  deck Deck @relation(fields: [deckId], references: [id])
+
+  @@map("purchases")
 }
