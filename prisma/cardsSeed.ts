@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 
 import { faker } from '@faker-js/faker'
+import { ulid } from 'ulid'
 
 const prisma = new PrismaClient()
 
@@ -29,6 +30,7 @@ async function main() {
   for (const category of categories) {
     for (let i = 0; i < 10; i++) {
       cards.push({
+        id: ulid(),
         categoryId: category.id,
         description: faker.lorem.sentence(),
         image: faker.image.url(),
