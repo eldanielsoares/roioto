@@ -14,6 +14,14 @@ import { LinkUserCardsToUserUseCase } from 'src/domain/user/application/usecases
 import { LinkUserCardsController } from './controllers/users/LinkUserCardsController'
 import { GetUserCardsController } from './controllers/users/GetUserCardsController'
 import { GetUserCardsByUserIdAndDeckIdUseCase } from 'src/domain/user/application/usecases/get-user-cards-by-user-id'
+import { CreatePacksController } from './controllers/packs/create-pack-controller'
+import { CreatePackUseCase } from 'src/domain/pack/application/usecases/create-pack'
+import { FindPackByIdController } from './controllers/packs/find-pack-by-id-controller'
+import { FindAllPacksController } from './controllers/packs/find-all-pack-controller'
+import { FindAllPacksUseCase } from 'src/domain/pack/application/usecases/find-all-packs'
+import { FindByIdPackUseCase } from 'src/domain/pack/application/usecases/find-pack-by-id'
+import { DeletePackUseCase } from 'src/domain/pack/application/usecases/delete-pack'
+import { DeletePackByIdController } from './controllers/packs/delete-pack-by-id-controller'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, EnvModule],
@@ -24,6 +32,10 @@ import { GetUserCardsByUserIdAndDeckIdUseCase } from 'src/domain/user/applicatio
     DeleteUserController,
     LinkUserCardsController,
     GetUserCardsController,
+    CreatePacksController,
+    DeletePackByIdController,
+    FindAllPacksController,
+    FindPackByIdController,
     // AuthenticateController,
   ],
   providers: [
@@ -33,6 +45,10 @@ import { GetUserCardsByUserIdAndDeckIdUseCase } from 'src/domain/user/applicatio
     DeleteUserUseCase,
     LinkUserCardsToUserUseCase,
     GetUserCardsByUserIdAndDeckIdUseCase,
+    CreatePackUseCase,
+    FindAllPacksUseCase,
+    FindByIdPackUseCase,
+    DeletePackUseCase,
     // UploadAttachmentUseCase,
   ],
 })
