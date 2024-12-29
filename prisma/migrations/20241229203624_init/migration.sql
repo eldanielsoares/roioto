@@ -1,4 +1,15 @@
 -- CreateTable
+CREATE TABLE "users" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL,
+    "level" INTEGER NOT NULL DEFAULT 1
+);
+
+-- CreateTable
 CREATE TABLE "cards" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "category_id" TEXT NOT NULL,
@@ -80,6 +91,9 @@ CREATE TABLE "purchases" (
     CONSTRAINT "purchases_pack_id_fkey" FOREIGN KEY ("pack_id") REFERENCES "packs" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "purchases_deck_id_fkey" FOREIGN KEY ("deck_id") REFERENCES "decks" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "userCards_user_id_card_id_key" ON "userCards"("user_id", "card_id");

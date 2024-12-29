@@ -5,22 +5,22 @@ import { faker } from '@faker-js/faker'
 const prisma = new PrismaClient()
 
 export const categories = [
-  { name: 'punishment', id: '01JG9RDWW309X41GHWZZTZG2M3' },
-  { name: 'challenge', id: '01JG9RDWW49BQEFQTDM869D6JD' },
-  { name: 'vote', id: '01JG9RDWW4VADK1W9NST3G1PQS' },
-  { name: 'action', id: '01JG9RDWW4044WREVFT8KFCF0E' },
-  { name: 'truthOrDare', id: '01JG9RDWW48NC438BE9C8NF9K4' },
-  { name: 'personal', id: '01JG9RDWW459H126X2R10B3MDV' },
-  { name: 'truth', id: '01JG9RDWW4DQ0DP7B1QQF91GF3' },
-  { name: 'lie', id: '01JG9RDWW4N2JACN5FPJ5FV2QN' },
-  { name: 'discord', id: '01JG9RDWW4HAA4GW6JQR8YWZN9' },
-  { name: 'gossip', id: '01JG9RDWW4CVKW18PN6XQP8AV3' },
-  { name: 'opinion', id: '01JG9RDWW4PBQYM49YRJB4VCGW' },
+  { name: 'punishment', id: '01JGA29GF35TSHFB4NY4G79M5B' },
+  { name: 'challenge', id: '01JGA29GF3YBV4BPSD5AZ2A43T' },
+  { name: 'vote', id: '01JGA29GF3ARFRWA143XJJQWPE' },
+  { name: 'action', id: '01JGA29GF3ER47ASEGS8T5DR95' },
+  { name: 'truthOrDare', id: '01JGA29GF32GXNZA7NEWYGTJZC' },
+  { name: 'personal', id: '01JGA29GF3DJKCCG6WAANQ2ZFB' },
+  { name: 'truth', id: '01JGA29GF4Y6Y57S3BXHQKH6GY' },
+  { name: 'lie', id: '01JGA29GF4EPMXZCEFN2WM9X9B' },
+  { name: 'discord', id: '01JGA29GF4EDDBBQZMNRQNHN60' },
+  { name: 'gossip', id: '01JGA29GF4MA8FKA6TP48S4SGC' },
+  { name: 'opinion', id: '01JGA29GF41SXQ2CDJBVAV3FR9' },
 ]
 
 const deck = [
-  { id: '01JG9RK4WN8X5HDT67BSWX5VJ8' },
-  { id: '01JG9RK4WNJBZ76PZVPRZ3683F' },
+  { id: '01JGA2CS3ETPTSJH5JWSZFCEVD' },
+  { id: '01JGA2CS3FX0VXQ005E7JKKD5M' },
 ]
 
 async function main() {
