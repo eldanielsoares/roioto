@@ -22,6 +22,14 @@ import { FindAllPacksUseCase } from 'src/domain/pack/application/usecases/find-a
 import { FindByIdPackUseCase } from 'src/domain/pack/application/usecases/find-pack-by-id'
 import { DeletePackUseCase } from 'src/domain/pack/application/usecases/delete-pack'
 import { DeletePackByIdController } from './controllers/packs/delete-pack-by-id-controller'
+import { CreateMatchController } from './controllers/users/create-match-controller'
+import { UpdateMatchShotsController } from './controllers/users/update-shot-match-controller'
+import { FindMatchByIdController } from './controllers/users/find-match-by-id-controller'
+import { FindMatchByUserIdController } from './controllers/users/find-match-by-user-id-controller'
+import { CreateMatchUseCase } from 'src/domain/user/application/usecases/create-match'
+import { UpdateMatchShotsByIdUseCase } from 'src/domain/user/application/usecases/update-match-shots-by-id'
+import { FindMatchByUserIdUseCase } from 'src/domain/user/application/usecases/find-match-by-userId'
+import { FindMatchByIdUseCase } from 'src/domain/user/application/usecases/find-match-by-id'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, EnvModule],
@@ -36,6 +44,10 @@ import { DeletePackByIdController } from './controllers/packs/delete-pack-by-id-
     DeletePackByIdController,
     FindAllPacksController,
     FindPackByIdController,
+    CreateMatchController,
+    UpdateMatchShotsController,
+    FindMatchByIdController,
+    FindMatchByUserIdController,
     // AuthenticateController,
   ],
   providers: [
@@ -49,6 +61,10 @@ import { DeletePackByIdController } from './controllers/packs/delete-pack-by-id-
     FindAllPacksUseCase,
     FindByIdPackUseCase,
     DeletePackUseCase,
+    CreateMatchUseCase,
+    UpdateMatchShotsByIdUseCase,
+    FindMatchByUserIdUseCase,
+    FindMatchByIdUseCase,
     // UploadAttachmentUseCase,
   ],
 })
