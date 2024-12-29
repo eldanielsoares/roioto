@@ -9,6 +9,8 @@ import { UserCardsRepository } from 'src/domain/user/application/repositories/us
 import { PrismaUserCardsRepository } from './repositories/prisma-user-cards-repository'
 import { PackRepository } from 'src/domain/pack/application/repositories/pack-repository'
 import { PrismaPackRepository } from './repositories/prisma-pack-repository'
+import { MatchRepository } from 'src/domain/user/application/repositories/match.repository'
+import { PrismaMatchesRepository } from './repositories/prisma-matches-repository'
 
 @Module({
   imports: [],
@@ -18,6 +20,7 @@ import { PrismaPackRepository } from './repositories/prisma-pack-repository'
     { provide: UsersRepository, useClass: PrismaUsersRepository },
     { provide: UserCardsRepository, useClass: PrismaUserCardsRepository },
     { provide: PackRepository, useClass: PrismaPackRepository },
+    { provide: MatchRepository, useClass: PrismaMatchesRepository },
     { provide: HashGenerator, useClass: BcryptHash },
   ],
   exports: [
@@ -27,6 +30,7 @@ import { PrismaPackRepository } from './repositories/prisma-pack-repository'
     EnvService,
     UserCardsRepository,
     PackRepository,
+    MatchRepository,
   ],
 })
 export class DatabaseModule {}
