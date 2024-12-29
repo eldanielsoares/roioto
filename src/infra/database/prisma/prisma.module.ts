@@ -5,6 +5,8 @@ import { UsersRepository } from 'src/domain/user/application/repositories/users-
 import { HashGenerator } from 'src/domain/user/application/cryptography/hash-generator'
 import { PrismaUsersRepository } from './repositories/prisma-users-repository'
 import { BcryptHash } from 'src/infra/cryptography/bcrypt-hash'
+import { UserCardsRepository } from 'src/domain/user/application/repositories/user-card-repository'
+import { PrismaUserCardsRepository } from './repositories/prisma-user-cards-repository'
 
 @Module({
   imports: [],
@@ -13,6 +15,7 @@ import { BcryptHash } from 'src/infra/cryptography/bcrypt-hash'
     // SeedService,
     EnvService,
     { provide: UsersRepository, useClass: PrismaUsersRepository },
+    { provide: UserCardsRepository, useClass: PrismaUserCardsRepository },
     // { provide: CreatorsRepository, useClass: PrismaCreatorsRepository },
     // {
     //   provide: TrafficManagersRepository,
@@ -30,6 +33,12 @@ import { BcryptHash } from 'src/infra/cryptography/bcrypt-hash'
     { provide: HashGenerator, useClass: BcryptHash },
     // { provide: VideoRepository, useClass: PrismaVideoRepository },
   ],
-  exports: [PrismaService, UsersRepository, HashGenerator, EnvService],
+  exports: [
+    PrismaService,
+    UsersRepository,
+    HashGenerator,
+    EnvService,
+    UserCardsRepository,
+  ],
 })
 export class DatabaseModule {}
