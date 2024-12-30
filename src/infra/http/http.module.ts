@@ -2,17 +2,17 @@ import { Module } from '@nestjs/common'
 import { DatabaseModule } from '../database/prisma/prisma.module'
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { EnvModule } from '../env/env.module'
-import { CreateUserController } from './controllers/users/CreateUserController'
+import { CreateUserController } from './controllers/users/create-user-controller'
 import { CreateUserUseCase } from 'src/domain/user/application/usecases/create-user'
-import { AuthenticateUserController } from './controllers/users/AuthenticateUserController'
+import { AuthenticateUserController } from './controllers/users/authenticate-user-controller'
 import { AuthenticateUserUseCase } from 'src/domain/user/application/usecases/authenticate-user'
-import { FindUserByIdController } from './controllers/users/FindUserById'
+import { FindUserByIdController } from './controllers/users/find-user-by-id'
 import { FindUserByIdUseCase } from 'src/domain/user/application/usecases/find-user-by-id'
 import { DeleteUserUseCase } from 'src/domain/user/application/usecases/delete-user'
-import { DeleteUserController } from './controllers/users/DeleteUserController'
+import { DeleteUserController } from './controllers/users/delete-user-controller'
 import { LinkUserCardsToUserUseCase } from 'src/domain/user/application/usecases/link-cards-to-user'
-import { LinkUserCardsController } from './controllers/users/LinkUserCardsController'
-import { GetUserCardsController } from './controllers/users/GetUserCardsController'
+import { LinkUserCardsController } from './controllers/users/link-user-cards-controller'
+import { GetUserCardsController } from './controllers/users/get-user-cards-controller'
 import { GetUserCardsByUserIdAndDeckIdUseCase } from 'src/domain/user/application/usecases/get-user-cards-by-user-id'
 import { CreatePacksController } from './controllers/packs/create-pack-controller'
 import { CreatePackUseCase } from 'src/domain/pack/application/usecases/create-pack'
@@ -80,8 +80,6 @@ import { UpdateStatusPurchaseController } from './controllers/users/update-purch
     ProcessPaymentUseCase,
     PurchaseWebhookPackUseCase,
     UpdatePurchaseStatusPackUseCase,
-
-    // UploadAttachmentUseCase,
   ],
 })
 export class HttpModule {}
