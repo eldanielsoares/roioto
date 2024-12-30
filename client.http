@@ -24,3 +24,110 @@ Content-Type: application/json
 }
 
 
+###
+
+// USER BY ID
+# @name authenticate
+GET {{baseUrl}}/users/me
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+###
+
+// Delete USER BY ID
+# @name authenticate
+DELETE  {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+###
+
+// USER
+# @name authenticate
+POST {{baseUrl}}/users/link-cards
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "deckId": "01JGA2CS3ETPTSJH5JWSZFCEVD"
+}
+
+###
+// USER
+# @name authenticate
+GET {{baseUrl}}/users/cards/01JG9RK4WN8X5HDT67BSWX5VJ8
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+// Packs
+# @name authenticate
+POST {{baseUrl}}/packs
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "O poderoso",
+  "price": 10,
+  "quantity": 25
+}
+
+
+###
+// Packs
+# @name authenticate
+GET {{baseUrl}}/packs/all
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+###
+// Packs
+# @name authenticate
+GET {{baseUrl}}/packs/01JGA28T8T1CKN2PW2R6B611K2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
+// Packs
+# @name authenticate
+DELETE {{baseUrl}}/packs/01JGA28T8T1CKN2PW2R6B611K2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+
+###
+// Packs
+# @name authenticate
+POST {{baseUrl}}/users/match
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "deckId": "01JGA2CS3ETPTSJH5JWSZFCEVD"
+}
+
+###
+// Packs
+# @name authenticate
+PUT {{baseUrl}}/users/match/01JGA85A58P85CQMZF2WZSB464
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "cardId": "03496676-40a5-4f87-a69d-b3f8f84e5778"
+}
+
+
+###
+// Preference Id
+# @name authenticate
+POST {{baseUrl}}/users/generatePreference
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "packId": "01JGA27R0DZ93J52GGA96DGC05"
+}
