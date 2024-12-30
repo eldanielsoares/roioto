@@ -48,6 +48,7 @@ export class Payments implements Payment {
         ],
       },
     })
+
     return preferenceResponse.id
   }
   async processPayment(data: ProcessPayment): Promise<unknown> {
