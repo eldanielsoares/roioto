@@ -2,7 +2,6 @@ import {
   BadRequestException,
   Body,
   ConflictException,
-  NotFoundException,
   Controller,
   Post,
   UsePipes,
@@ -10,8 +9,6 @@ import {
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
 import { Public } from 'src/infra/auth/public'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
-import { CreateUserUseCase } from 'src/domain/user/application/usecases/create-user'
 import { AuthenticateUserUseCase } from 'src/domain/user/application/usecases/authenticate-user'
 import { WrongCredentialsError } from 'src/domain/user/application/usecases/errors/wrong-credentials-error'
 

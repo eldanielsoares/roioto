@@ -5,10 +5,8 @@ import {
   Get,
   Param,
 } from '@nestjs/common'
-import { FindUserByIdUseCase } from 'src/domain/user/application/usecases/find-user-by-id'
 import { CurrentUser } from 'src/infra/auth/current-user.decorator'
 import { UserPayload } from 'src/infra/auth/jwt.strategy'
-import { UserPresenter } from '../../presenters/user-presenter'
 import { GetUserCardsByUserIdAndDeckIdUseCase } from 'src/domain/user/application/usecases/get-user-cards-by-user-id'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'

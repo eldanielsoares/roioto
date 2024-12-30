@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { Payment, PaymentPreferences } from '../payments/payment'
+import { Payment } from '../payments/payment'
 import { SomethingGoesWrongError } from './errors/something-goes-wrong'
 import { Either, left, right } from 'src/core/either'
 import { PackRepository } from 'src/domain/pack/application/repositories/pack-repository'

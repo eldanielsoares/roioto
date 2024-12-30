@@ -7,7 +7,6 @@ import {
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { Public } from 'src/infra/auth/public'
 import { CreatePackUseCase } from 'src/domain/pack/application/usecases/create-pack'
 import { SomethingGoesWrongError } from 'src/domain/user/application/usecases/errors/something-goes-wrong'
 import { PackPresenter } from '../../presenters/pack-presenter'

@@ -2,16 +2,12 @@ import {
   BadRequestException,
   Body,
   ConflictException,
-  NotFoundException,
   Controller,
   Post,
-  UsePipes,
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { Public } from 'src/infra/auth/public'
 import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
-import { CreateUserUseCase } from 'src/domain/user/application/usecases/create-user'
 import { CreateMatchUseCase } from 'src/domain/user/application/usecases/create-match'
 import { MatchPresenter } from '../../presenters/match-presenter'
 import { CurrentUser } from 'src/infra/auth/current-user.decorator'

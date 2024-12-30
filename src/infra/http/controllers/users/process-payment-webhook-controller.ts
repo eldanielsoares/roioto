@@ -2,7 +2,6 @@ import {
   BadRequestException,
   Body,
   ConflictException,
-  NotFoundException,
   Controller,
   Post,
   UsePipes,
@@ -11,9 +10,6 @@ import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
 import { Public } from 'src/infra/auth/public'
 import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
-import { CreateUserUseCase } from 'src/domain/user/application/usecases/create-user'
-import { GeneratePreferenceIdUseCase } from 'src/domain/user/application/usecases/generate-preference-id'
-import { ProcessPaymentUseCase } from 'src/domain/user/application/usecases/process-payment'
 import { PurchaseWebhookPackUseCase } from 'src/domain/user/application/usecases/purchase-webhook'
 
 const processPaymentBodySchema = z.object({

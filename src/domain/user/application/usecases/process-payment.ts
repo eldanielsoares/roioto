@@ -1,9 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import {
-  Payment,
-  PaymentPreferences,
-  ProcessPayment,
-} from '../payments/payment'
+import { Payment, ProcessPayment } from '../payments/payment'
 import { PurchaseCardsRepository } from '../repositories/purchase-cards-repository'
 import { PurchaseCards } from '../../enterprise/entities/purchase-cards'
 import { Either, left, right } from 'src/core/either'

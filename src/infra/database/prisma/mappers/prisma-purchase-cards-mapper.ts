@@ -1,7 +1,5 @@
 import { Prisma, Purchase as PrismaPurchase } from '@prisma/client'
 import { UniqueEntityID } from 'src/core/entities/unique-entity-id'
-import { Pack } from 'src/domain/pack/enterprise/entities/pack'
-import { Match } from 'src/domain/user/enterprise/entities/match'
 import { PurchaseCards } from 'src/domain/user/enterprise/entities/purchase-cards'
 
 export class PrismaPurchaseCardshMapper {

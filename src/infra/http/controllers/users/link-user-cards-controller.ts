@@ -1,11 +1,4 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  Post,
-  UsePipes,
-} from '@nestjs/common'
-import { FindUserByIdUseCase } from 'src/domain/user/application/usecases/find-user-by-id'
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
 import { CurrentUser } from 'src/infra/auth/current-user.decorator'
 import { UserPayload } from 'src/infra/auth/jwt.strategy'
 

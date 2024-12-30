@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { UserCardsRepository } from '../repositories/user-card-repository'
 import { PurchaseCardsRepository } from '../repositories/purchase-cards-repository'
 import { PurchaseCards } from '../../enterprise/entities/purchase-cards'
