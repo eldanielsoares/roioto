@@ -30,6 +30,14 @@ import { CreateMatchUseCase } from 'src/domain/user/application/usecases/create-
 import { UpdateMatchShotsByIdUseCase } from 'src/domain/user/application/usecases/update-match-shots-by-id'
 import { FindMatchByUserIdUseCase } from 'src/domain/user/application/usecases/find-match-by-userId'
 import { FindMatchByIdUseCase } from 'src/domain/user/application/usecases/find-match-by-id'
+import { GeneratePreferenceIdUseCase } from 'src/domain/user/application/usecases/generate-preference-id'
+import { ProcessPaymentUseCase } from 'src/domain/user/application/usecases/process-payment'
+import { PurchaseWebhookPackUseCase } from 'src/domain/user/application/usecases/purchase-webhook'
+import { GeneratePreferenceIdController } from './controllers/users/generate-preference-id-controller'
+import { ProcessPaymentController } from './controllers/users/process-payment-controller'
+import { ProcessPaymentWebhookController } from './controllers/users/process-payment-webhook-controller'
+import { UpdatePurchaseStatusPackUseCase } from 'src/domain/user/application/usecases/update-purchase-status-pack'
+import { UpdateStatusPurchaseController } from './controllers/users/update-purchase-status-controller'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, EnvModule],
@@ -48,7 +56,10 @@ import { FindMatchByIdUseCase } from 'src/domain/user/application/usecases/find-
     UpdateMatchShotsController,
     FindMatchByIdController,
     FindMatchByUserIdController,
-    // AuthenticateController,
+    GeneratePreferenceIdController,
+    ProcessPaymentController,
+    ProcessPaymentWebhookController,
+    UpdateStatusPurchaseController,
   ],
   providers: [
     CreateUserUseCase,
@@ -65,6 +76,11 @@ import { FindMatchByIdUseCase } from 'src/domain/user/application/usecases/find-
     UpdateMatchShotsByIdUseCase,
     FindMatchByUserIdUseCase,
     FindMatchByIdUseCase,
+    GeneratePreferenceIdUseCase,
+    ProcessPaymentUseCase,
+    PurchaseWebhookPackUseCase,
+    UpdatePurchaseStatusPackUseCase,
+
     // UploadAttachmentUseCase,
   ],
 })
