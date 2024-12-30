@@ -16,6 +16,7 @@ import { GeneratePreferenceIdUseCase } from 'src/domain/user/application/usecase
 import { ProcessPaymentUseCase } from 'src/domain/user/application/usecases/process-payment'
 import { CurrentUser } from 'src/infra/auth/current-user.decorator'
 import { UserPayload } from 'src/infra/auth/jwt.strategy'
+import { PurchaseCardsPresenter } from '../../presenters/purchase-cards-presenter'
 
 const processPaymentBodySchema = z.object({
   packId: z.string(),
@@ -74,6 +75,9 @@ export class ProcessPaymentController {
       }
     }
 
-    return result.value
+    return {
+      payment: result.value.payment,
+      purchaseCards: PurchaseCardsPresenter.toHTTP(result.value.purchaseCards),
+    }
   }
 }

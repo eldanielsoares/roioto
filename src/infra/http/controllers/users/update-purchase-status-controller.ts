@@ -17,6 +17,7 @@ import { GeneratePreferenceIdUseCase } from 'src/domain/user/application/usecase
 import { UpdatePurchaseStatusPackUseCase } from 'src/domain/user/application/usecases/update-purchase-status-pack'
 import { CurrentUser } from 'src/infra/auth/current-user.decorator'
 import { UserPayload } from 'src/infra/auth/jwt.strategy'
+import { PurchaseCardsPresenter } from '../../presenters/purchase-cards-presenter'
 
 const updatePurchaseStatusBodySchema = z.object({
   status: z.string(),
@@ -62,6 +63,6 @@ export class UpdateStatusPurchaseController {
       }
     }
 
-    return result.value.purchaseCard
+    return PurchaseCardsPresenter.toHTTP(result.value.purchaseCard)
   }
 }
