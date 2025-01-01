@@ -14,6 +14,7 @@ import { ProcessPaymentUseCase } from '@/domain/user/application/usecases/proces
 import { CurrentUser } from '@/infra/auth/current-user.decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { PurchaseCardsPresenter } from '../../presenters/purchase-cards-presenter'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 const processPaymentBodySchema = z.object({
   packId: z.string(),
@@ -65,8 +66,8 @@ export class ProcessPaymentController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }

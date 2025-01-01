@@ -11,6 +11,7 @@ import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
 import { Public } from '@/infra/auth/public'
 import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { GeneratePreferenceIdUseCase } from '@/domain/user/application/usecases/generate-preference-id'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 const generatePreferenceIdBodySchema = z.object({
   packId: z.string(),
@@ -42,8 +43,8 @@ export class GeneratePreferenceIdController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }

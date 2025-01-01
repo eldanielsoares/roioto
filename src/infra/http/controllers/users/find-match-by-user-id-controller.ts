@@ -9,6 +9,7 @@ import { MatchPresenter } from '../../presenters/match-presenter'
 import { CurrentUser } from '@/infra/auth/current-user.decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { FindMatchByUserIdUseCase } from '@/domain/user/application/usecases/find-match-by-userId'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 @Controller('/users/matches')
 export class FindMatchByUserIdController {
@@ -25,8 +26,8 @@ export class FindMatchByUserIdController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }

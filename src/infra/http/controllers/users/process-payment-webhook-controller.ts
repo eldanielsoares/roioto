@@ -11,6 +11,7 @@ import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
 import { Public } from '@/infra/auth/public'
 import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { PurchaseWebhookPackUseCase } from '@/domain/user/application/usecases/purchase-webhook'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 const processPaymentBodySchema = z.object({
   paymentId: z.string(),
@@ -45,8 +46,8 @@ export class ProcessPaymentWebhookController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }

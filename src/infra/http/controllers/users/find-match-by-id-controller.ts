@@ -8,6 +8,7 @@ import {
 import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { MatchPresenter } from '../../presenters/match-presenter'
 import { FindMatchByIdUseCase } from '@/domain/user/application/usecases/find-match-by-id'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 @Controller('/users/match')
 export class FindMatchByIdController {
@@ -21,8 +22,8 @@ export class FindMatchByIdController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }

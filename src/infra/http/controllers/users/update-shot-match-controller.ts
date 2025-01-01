@@ -11,6 +11,7 @@ import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
 import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { MatchPresenter } from '../../presenters/match-presenter'
 import { UpdateMatchShotsByIdUseCase } from '@/domain/user/application/usecases/update-match-shots-by-id'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 const updateMatchBodySchema = z.object({
   cardId: z.string(),
@@ -37,8 +38,8 @@ export class UpdateMatchShotsController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }

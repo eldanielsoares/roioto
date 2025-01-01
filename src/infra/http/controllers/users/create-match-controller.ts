@@ -12,6 +12,7 @@ import { CreateMatchUseCase } from '@/domain/user/application/usecases/create-ma
 import { MatchPresenter } from '../../presenters/match-presenter'
 import { CurrentUser } from '@/infra/auth/current-user.decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
+import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
 
 const createMatchBodySchema = z.object({
   deckId: z.string(),
@@ -41,8 +42,8 @@ export class CreateMatchController {
       const error = result.value
 
       switch (error.constructor) {
-        case UserAlreadyExistsError:
-          throw new ConflictException(error.message)
+        case SomethingGoesWrongError:
+          throw new BadRequestException(error.message)
         default:
           throw new BadRequestException(error.message)
       }
