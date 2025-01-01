@@ -4,7 +4,7 @@ import { Optional } from '@/core/types/optional'
 
 export type PurchaseCardsProps = {
   userId: string
-  packId: string
+  packId?: string
   deckId?: string
   status: string
   paymentId?: string
