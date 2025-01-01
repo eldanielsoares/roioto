@@ -32,7 +32,7 @@ export class PurchaseWebhookPackUseCase {
     const purchaseCard = PurchaseCards.create({
       userId: purchase.userId,
       packId: purchase.packId,
-      status: 'pending',
+      status,
       updatedAt: new Date(),
     })
 
