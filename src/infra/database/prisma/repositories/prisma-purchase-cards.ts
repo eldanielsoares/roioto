@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common'
-import { PurchaseCardsRepository } from 'src/domain/user/application/repositories/purchase-cards-repository'
-import { PurchaseCards } from 'src/domain/user/enterprise/entities/purchase-cards'
+import { PurchaseCardsRepository } from '@/domain/user/application/repositories/purchase-cards-repository'
+import { PurchaseCards } from '@/domain/user/enterprise/entities/purchase-cards'
 import { PrismaPurchaseCardshMapper } from '../mappers/prisma-purchase-cards-mapper'
 import { PrismaService } from '../prisma.service'
 

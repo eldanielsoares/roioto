@@ -9,9 +9,9 @@ import {
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { Public } from 'src/infra/auth/public'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
-import { CreateUserUseCase } from 'src/domain/user/application/usecases/create-user'
+import { Public } from '@/infra/auth/public'
+import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
+import { CreateUserUseCase } from '@/domain/user/application/usecases/create-user'
 
 const createUserBodySchema = z.object({
   name: z.string(),

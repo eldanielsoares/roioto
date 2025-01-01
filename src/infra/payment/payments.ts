@@ -3,7 +3,7 @@ import {
   Payment,
   PaymentPreferences,
   ProcessPayment,
-} from 'src/domain/user/application/payments/payment'
+} from '@/domain/user/application/payments/payment'
 
 import MercadoPagoConfig, {
   Preference,

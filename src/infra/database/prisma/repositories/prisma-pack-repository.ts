@@ -1,5 +1,5 @@
-import { PackRepository } from 'src/domain/pack/application/repositories/pack-repository'
-import { Pack } from 'src/domain/pack/enterprise/entities/pack'
+import { PackRepository } from '@/domain/pack/application/repositories/pack-repository'
+import { Pack } from '@/domain/pack/enterprise/entities/pack'
 import { PrismaService } from '../prisma.service'
 import { PrismaPackMapper } from '../mappers/prisma-pack-mapper'
 import { Injectable } from '@nestjs/common'

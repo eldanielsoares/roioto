@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { PackRepository } from '../repositories/pack-repository'
 import { Pack } from '../../enterprise/entities/pack'
-import { Either, left, right } from 'src/core/either'
+import { Either, left, right } from '@/core/either'
 import { PackNotFoundError } from './errors/pack-not-found-error'
 
 type PackResponse = Either<PackNotFoundError, { pack: Pack }>

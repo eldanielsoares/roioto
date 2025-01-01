@@ -1,6 +1,6 @@
 import { Prisma, Pack as PrismaPack } from '@prisma/client'
-import { UniqueEntityID } from 'src/core/entities/unique-entity-id'
-import { Pack } from 'src/domain/pack/enterprise/entities/pack'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Pack } from '@/domain/pack/enterprise/entities/pack'
 
 export class PrismaPackMapper {
   static toDomain(raw: PrismaPack): Pack {

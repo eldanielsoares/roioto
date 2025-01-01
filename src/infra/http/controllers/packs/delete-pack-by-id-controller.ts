@@ -8,15 +8,9 @@ import {
   Param,
   Post,
 } from '@nestjs/common'
-import { z } from 'zod'
-import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { Public } from 'src/infra/auth/public'
-import { CreatePackUseCase } from 'src/domain/pack/application/usecases/create-pack'
-import { SomethingGoesWrongError } from 'src/domain/user/application/usecases/errors/something-goes-wrong'
-import { PackPresenter } from '../../presenters/pack-presenter'
-import { FindByIdPackUseCase } from 'src/domain/pack/application/usecases/find-pack-by-id'
-import { PackNotFoundError } from 'src/domain/pack/application/usecases/errors/pack-not-found-error'
-import { DeletePackUseCase } from 'src/domain/pack/application/usecases/delete-pack'
+import { Public } from '@/infra/auth/public'
+import { PackNotFoundError } from '@/domain/pack/application/usecases/errors/pack-not-found-error'
+import { DeletePackUseCase } from '@/domain/pack/application/usecases/delete-pack'
 
 @Controller('/packs')
 @Public()

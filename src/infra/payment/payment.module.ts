@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { PrismaService } from '../database/prisma/prisma.service'
 import { Payments } from './payments'
-import { Payment } from 'src/domain/user/application/payments/payment'
+import { Payment } from '@/domain/user/application/payments/payment'
 
 @Module({
   controllers: [],

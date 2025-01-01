@@ -1,7 +1,7 @@
 import { BadRequestException, Controller, Get } from '@nestjs/common'
-import { FindUserByIdUseCase } from 'src/domain/user/application/usecases/find-user-by-id'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
+import { FindUserByIdUseCase } from '@/domain/user/application/usecases/find-user-by-id'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { UserPresenter } from '../../presenters/user-presenter'
 
 @Controller('users/me')

@@ -8,9 +8,9 @@ import {
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { MatchPresenter } from '../../presenters/match-presenter'
-import { UpdateMatchShotsByIdUseCase } from 'src/domain/user/application/usecases/update-match-shots-by-id'
+import { UpdateMatchShotsByIdUseCase } from '@/domain/user/application/usecases/update-match-shots-by-id'
 
 const updateMatchBodySchema = z.object({
   cardId: z.string(),

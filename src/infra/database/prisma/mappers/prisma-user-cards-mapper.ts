@@ -1,6 +1,6 @@
 import { Card, Prisma, UserCard as PrismaUserCard } from '@prisma/client'
-import { UniqueEntityID } from 'src/core/entities/unique-entity-id'
-import { UserCard } from 'src/domain/user/enterprise/entities/user-card'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { UserCard } from '@/domain/user/enterprise/entities/user-card'
 
 type MapperResponse = PrismaUserCard & {
   card?: Card

@@ -1,10 +1,10 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
 
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { LinkUserCardsToUserUseCase } from 'src/domain/user/application/usecases/link-cards-to-user'
+import { LinkUserCardsToUserUseCase } from '@/domain/user/application/usecases/link-cards-to-user'
 import { UserCardPresenter } from '../../presenters/user-card-presenter'
 
 const linkUserCardsBodySchema = z.object({

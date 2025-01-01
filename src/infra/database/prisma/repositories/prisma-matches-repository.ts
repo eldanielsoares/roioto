@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common'
-import { MatchRepository } from 'src/domain/user/application/repositories/match.repository'
+import { MatchRepository } from '@/domain/user/application/repositories/match.repository'
 import { PrismaMatchMapper } from '../mappers/prisma-match-mapper'
 import { PrismaService } from '../prisma.service'
-import { Match } from 'src/domain/user/enterprise/entities/match'
+import { Match } from '@/domain/user/enterprise/entities/match'
 
 @Injectable()
 export class PrismaMatchesRepository implements MatchRepository {

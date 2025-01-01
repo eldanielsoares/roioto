@@ -5,10 +5,10 @@ import {
   Get,
   Param,
 } from '@nestjs/common'
-import { Public } from 'src/infra/auth/public'
+import { Public } from '@/infra/auth/public'
 import { PackPresenter } from '../../presenters/pack-presenter'
-import { FindByIdPackUseCase } from 'src/domain/pack/application/usecases/find-pack-by-id'
-import { PackNotFoundError } from 'src/domain/pack/application/usecases/errors/pack-not-found-error'
+import { FindByIdPackUseCase } from '@/domain/pack/application/usecases/find-pack-by-id'
+import { PackNotFoundError } from '@/domain/pack/application/usecases/errors/pack-not-found-error'
 
 @Controller('/packs')
 @Public()

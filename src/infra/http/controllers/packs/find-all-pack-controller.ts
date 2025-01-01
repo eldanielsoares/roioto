@@ -6,14 +6,10 @@ import {
   Get,
   Post,
 } from '@nestjs/common'
-import { z } from 'zod'
-import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { Public } from 'src/infra/auth/public'
-import { CreatePackUseCase } from 'src/domain/pack/application/usecases/create-pack'
-import { SomethingGoesWrongError } from 'src/domain/user/application/usecases/errors/something-goes-wrong'
+import { Public } from '@/infra/auth/public'
 import { PackPresenter } from '../../presenters/pack-presenter'
-import { FindAllPacksUseCase } from 'src/domain/pack/application/usecases/find-all-packs'
-import { PackNotFoundError } from 'src/domain/pack/application/usecases/errors/pack-not-found-error'
+import { FindAllPacksUseCase } from '@/domain/pack/application/usecases/find-all-packs'
+import { PackNotFoundError } from '@/domain/pack/application/usecases/errors/pack-not-found-error'
 
 @Controller('/packs/all')
 @Public()

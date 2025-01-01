@@ -5,9 +5,9 @@ import {
   Get,
   Param,
 } from '@nestjs/common'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { MatchPresenter } from '../../presenters/match-presenter'
-import { FindMatchByIdUseCase } from 'src/domain/user/application/usecases/find-match-by-id'
+import { FindMatchByIdUseCase } from '@/domain/user/application/usecases/find-match-by-id'
 
 @Controller('/users/match')
 export class FindMatchByIdController {

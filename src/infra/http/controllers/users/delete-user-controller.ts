@@ -1,7 +1,7 @@
 import { BadRequestException, Controller, Delete, Get } from '@nestjs/common'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
-import { DeleteUserUseCase } from 'src/domain/user/application/usecases/delete-user'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
+import { DeleteUserUseCase } from '@/domain/user/application/usecases/delete-user'
 
 @Controller('users')
 export class DeleteUserController {

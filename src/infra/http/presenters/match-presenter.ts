@@ -1,4 +1,4 @@
-import { Match } from 'src/domain/user/enterprise/entities/match'
+import { Match } from '@/domain/user/enterprise/entities/match'
 
 export class MatchPresenter {
   static toHTTP(match: Match) {

@@ -1,4 +1,4 @@
-import { Pack } from 'src/domain/pack/enterprise/entities/pack'
+import { Pack } from '@/domain/pack/enterprise/entities/pack'
 
 export class PackPresenter {
   static toHTTP(pack: Pack) {

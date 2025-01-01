@@ -8,11 +8,11 @@ import {
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { Public } from 'src/infra/auth/public'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
-import { ProcessPaymentUseCase } from 'src/domain/user/application/usecases/process-payment'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
+import { Public } from '@/infra/auth/public'
+import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
+import { ProcessPaymentUseCase } from '@/domain/user/application/usecases/process-payment'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
 import { PurchaseCardsPresenter } from '../../presenters/purchase-cards-presenter'
 
 const processPaymentBodySchema = z.object({

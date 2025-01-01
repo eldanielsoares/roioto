@@ -1,6 +1,6 @@
 import { Prisma, Match as PrismaMatch } from '@prisma/client'
-import { UniqueEntityID } from 'src/core/entities/unique-entity-id'
-import { Match } from 'src/domain/user/enterprise/entities/match'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Match } from '@/domain/user/enterprise/entities/match'
 
 export class PrismaMatchMapper {
   static toDomain(raw: PrismaMatch): Match {

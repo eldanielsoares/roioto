@@ -7,11 +7,11 @@ import {
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
-import { CreateMatchUseCase } from 'src/domain/user/application/usecases/create-match'
+import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
+import { CreateMatchUseCase } from '@/domain/user/application/usecases/create-match'
 import { MatchPresenter } from '../../presenters/match-presenter'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
 
 const createMatchBodySchema = z.object({
   deckId: z.string(),

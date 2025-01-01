@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common'
 import {
   LinkUserCardsToUser,
   UserCardsRepository,
-} from 'src/domain/user/application/repositories/user-card-repository'
-import { UserCard } from 'src/domain/user/enterprise/entities/user-card'
+} from '@/domain/user/application/repositories/user-card-repository'
+import { UserCard } from '@/domain/user/enterprise/entities/user-card'
 import { PrismaService } from '../prisma.service'
 import { Prisma } from '@prisma/client'
 import { PrismaUserCardsMapper } from '../mappers/prisma-user-cards-mapper'

@@ -4,11 +4,11 @@ import {
   Controller,
   Get,
 } from '@nestjs/common'
-import { UserAlreadyExistsError } from 'src/domain/user/application/usecases/errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { MatchPresenter } from '../../presenters/match-presenter'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
-import { FindMatchByUserIdUseCase } from 'src/domain/user/application/usecases/find-match-by-userId'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
+import { FindMatchByUserIdUseCase } from '@/domain/user/application/usecases/find-match-by-userId'
 
 @Controller('/users/matches')
 export class FindMatchByUserIdController {

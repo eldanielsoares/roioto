@@ -1,4 +1,4 @@
-import { PurchaseCards } from 'src/domain/user/enterprise/entities/purchase-cards'
+import { PurchaseCards } from '@/domain/user/enterprise/entities/purchase-cards'
 
 export class PurchaseCardsPresenter {
   static toHTTP(purchaseCards: PurchaseCards) {

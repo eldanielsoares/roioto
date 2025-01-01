@@ -1,6 +1,6 @@
 import { Prisma, Purchase as PrismaPurchase } from '@prisma/client'
-import { UniqueEntityID } from 'src/core/entities/unique-entity-id'
-import { PurchaseCards } from 'src/domain/user/enterprise/entities/purchase-cards'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { PurchaseCards } from '@/domain/user/enterprise/entities/purchase-cards'
 
 export class PrismaPurchaseCardshMapper {
   static toDomain(raw: PrismaPurchase): PurchaseCards {

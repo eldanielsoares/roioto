@@ -5,9 +5,9 @@ import {
   Get,
   Param,
 } from '@nestjs/common'
-import { CurrentUser } from 'src/infra/auth/current-user.decorator'
-import { UserPayload } from 'src/infra/auth/jwt.strategy'
-import { GetUserCardsByUserIdAndDeckIdUseCase } from 'src/domain/user/application/usecases/get-user-cards-by-user-id'
+import { CurrentUser } from '@/infra/auth/current-user.decorator'
+import { UserPayload } from '@/infra/auth/jwt.strategy'
+import { GetUserCardsByUserIdAndDeckIdUseCase } from '@/domain/user/application/usecases/get-user-cards-by-user-id'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
 import { UserCardPresenter } from '../../presenters/user-card-presenter'
