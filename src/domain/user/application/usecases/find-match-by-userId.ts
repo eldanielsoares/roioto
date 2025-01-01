@@ -18,10 +18,8 @@ export class FindMatchByUserIdUseCase {
   async execute(userId: string): Promise<FindMatchByIdUseCaseResponse> {
     const matchs = await this.matchRepository.findMatchesByUserId(userId)
 
-    if (!matchs?.length) return left(new SomethingGoesWrongError())
-
     return right({
-      matchs,
+      matchs: matchs || [],
     })
   }
 }
