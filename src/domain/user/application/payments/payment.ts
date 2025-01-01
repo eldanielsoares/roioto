@@ -17,5 +17,5 @@ export type ProcessPayment = {
 
 export abstract class Payment {
   abstract createPreference(data: PaymentPreferences): Promise<string>
-  abstract processPayment(data: ProcessPayment): Promise<unknown>
+  abstract processPayment(data: ProcessPayment): Promise<any>
 }
