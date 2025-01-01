@@ -14,14 +14,14 @@ export class PrismaMatchesRepository implements MatchRepository {
 
     return PrismaMatchMapper.toDomain(savedMatch)
   }
-  async findMatchesByUserId(userId: string): Promise<any[]> {
+  async findMatchesByUserId(userId: string): Promise<Match[] | null> {
     const matches = await this.prisma.match.findMany({ where: { userId } })
 
     if (!matches?.length) return null
 
     return matches.map((match) => PrismaMatchMapper.toDomain(match))
   }
-  async findMatchById(id: string): Promise<any> {
+  async findMatchById(id: string): Promise<Match | null> {
     const match = await this.prisma.match.findFirst({ where: { id } })
 
     if (!match) return null
