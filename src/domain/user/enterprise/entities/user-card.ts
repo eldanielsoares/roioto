@@ -3,24 +3,24 @@ import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { Optional } from '@/core/types/optional'
 
 export type Card = {
-  id: UniqueEntityID
-  categoryId: UniqueEntityID
+  id: string
+  categoryId: string
   description: string
   image: string
   weight: number
   shots: number
   isFree: boolean
   level: number
-  deckId: UniqueEntityID
+  deckId: string
   createdAt: Date
   updatedAt: Date
-  packId?: UniqueEntityID
+  packId?: string
 }
 
 export type UserCardProps = {
-  userId: UniqueEntityID
-  cardId: UniqueEntityID
-  deckId: UniqueEntityID
+  userId: string
+  cardId: string
+  deckId: string
   createdAt?: Date
   updatedAt?: Date
   card?: Card
