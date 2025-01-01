@@ -30,7 +30,10 @@ export class ProcessPaymentUseCase {
     const { deckId, userId, packId, ...paymentData } = data
     const payment = await this.payment.processPayment(paymentData)
 
+    if (!payment) return left(new SomethingGoesWrongError())
+
     const purchaseCard = PurchaseCards.create({
+      paymentId: payment.id,
       deckId,
       userId,
       packId,
