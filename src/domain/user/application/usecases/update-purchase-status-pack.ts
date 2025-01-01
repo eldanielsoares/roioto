@@ -5,7 +5,7 @@ import { Either, left, right } from 'src/core/either'
 import { SomethingGoesWrongError } from './errors/something-goes-wrong'
 
 type UpdatePurchasePackStatus = {
-  packId: string
+  id: string
   userId: string
   status: string
 }
@@ -23,18 +23,17 @@ export class UpdatePurchaseStatusPackUseCase {
 
   async execute({
     userId,
-    packId,
+    id,
     status,
   }: UpdatePurchasePackStatus): Promise<UpdatePurchaseResponse> {
     const purchaseCard = PurchaseCards.create({
       userId,
-      packId,
       status,
       updatedAt: new Date(),
     })
 
     const savedPurchaseCard = await this.purchaseRepository.updatePurchaseCards(
-      packId,
+      id,
       purchaseCard,
     )
 
