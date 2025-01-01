@@ -14,7 +14,7 @@ export class DeleteMatchByIdUseCase {
 
     if (!match) return left(new SomethingGoesWrongError())
 
-    await this.matchRepository.deleteMatch(match.id)
+    await this.matchRepository.deleteMatch(id)
 
     return right(undefined)
   }

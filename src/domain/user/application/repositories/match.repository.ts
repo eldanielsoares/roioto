@@ -2,11 +2,11 @@ import { Match } from '../../enterprise/entities/match'
 
 export abstract class MatchRepository {
   abstract create(data: Match): Promise<Match>
-  abstract findMatchesByUserId(userId: string): Promise<any[]>
-  abstract findMatchById(id: string): Promise<any | undefined>
+  abstract findMatchesByUserId(userId: string): Promise<Match[] | null>
+  abstract findMatchById(id: string): Promise<Match | null>
   abstract updateMatchShots(data: {
     cardId: string
     matchId: string
-  }): Promise<any>
+  }): Promise<Match>
   abstract deleteMatch(id: string): Promise<void>
 }
