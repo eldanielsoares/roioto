@@ -24,6 +24,7 @@ model User {
   UserCard  UserCard[]
   Match     Match[]
   Purchase  Purchase[]
+  provider  String?
 
   @@map("users")
 }
