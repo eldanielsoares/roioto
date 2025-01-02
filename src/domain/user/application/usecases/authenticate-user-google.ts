@@ -25,7 +25,7 @@ export class AuthenticateUserGoogleUsecase {
   async execute(data: User): Promise<AuthenticateUserResponse> {
     const user = await this.findOrCreateUser(data)
 
-    if (!user.provider) {
+    if (!user.provider || user.provider !== data.provider) {
       return left(new SomethingGoesWrongError())
     }
 
