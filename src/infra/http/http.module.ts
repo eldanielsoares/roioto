@@ -44,7 +44,9 @@ import { AuthenticateUserGoogleCallbackController } from './controllers/users/au
 import { QueueModule } from '../queue/queue.module'
 import { ProcessFileModule } from '../process-file/process-file.module'
 import { SaveCardsUsecase } from '@/domain/cards/application/usecases/save-cards'
-import { UploadController } from './controllers/cards/upload-cards-controller'
+import { UploadCardsController } from './controllers/cards/upload-cards-controller'
+import { SaveCategoriesUsecase } from '@/domain/cards/application/usecases/save-categories'
+import { UploadCategoriesController } from './controllers/cards/upload-categories-controller'
 
 @Module({
   imports: [
@@ -75,7 +77,8 @@ import { UploadController } from './controllers/cards/upload-cards-controller'
     UpdateStatusPurchaseController,
     AuthenticateUserGoogleController,
     AuthenticateUserGoogleCallbackController,
-    UploadController,
+    UploadCardsController,
+    UploadCategoriesController,
   ],
   providers: [
     CreateUserUseCase,
@@ -98,6 +101,7 @@ import { UploadController } from './controllers/cards/upload-cards-controller'
     UpdatePurchaseStatusPackUseCase,
     AuthenticateUserGoogleUsecase,
     SaveCardsUsecase,
+    SaveCategoriesUsecase,
   ],
 })
 export class HttpModule {}
