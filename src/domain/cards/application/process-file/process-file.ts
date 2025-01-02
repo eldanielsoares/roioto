@@ -1,5 +1,3 @@
-import { CardProps } from '../../enterprise/entities/card'
-
 export abstract class ProcessFile {
-  abstract processFile(file: Buffer): Promise<CardProps[]>
+  abstract processFile<T>(file: Buffer): Promise<T[]>
 }
