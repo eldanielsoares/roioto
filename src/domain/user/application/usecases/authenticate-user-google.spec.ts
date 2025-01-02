@@ -69,12 +69,35 @@ describe('Authenticate User Google Use Case', () => {
     expect(result.isLeft()).toBe(true)
     expect(result.value).toBeInstanceOf(SomethingGoesWrongError)
   })
+  it('should return error if user provider is not google', async () => {
+    const user = makeUser({
+      name: 'John Doe',
+      email: 'john.doe@gmail.com',
+      password: await fakeHasher.hash(''),
+      provider: 'google',
+    })
+
+    inMemoryUsersRepository.items.push(user)
+
+    const mockUser = User.create({
+      name: 'John Doe',
+      email: 'john.doe@gmail.com',
+      password: '',
+      provider: 'facebook',
+    })
+
+    const result = await sut.execute(mockUser)
+
+    expect(result.isLeft()).toBe(true)
+    expect(result.value).toBeInstanceOf(SomethingGoesWrongError)
+  })
 
   it('should create a user if user dont exists', async () => {
     const mockUser = User.create({
       name: 'John Doe',
       email: 'john.doe@gmail.com',
       password: '',
+      provider: 'google',
     })
 
     const result = await sut.execute(mockUser)
