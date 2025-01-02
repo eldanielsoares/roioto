@@ -41,9 +41,19 @@ import { UpdateStatusPurchaseController } from './controllers/users/update-purch
 import { AuthenticateUserGoogleController } from './controllers/users/authenticate-user-google'
 import { AuthenticateUserGoogleUsecase } from '@/domain/user/application/usecases/authenticate-user-google'
 import { AuthenticateUserGoogleCallbackController } from './controllers/users/authenticate-user-google-callback'
+import { JobModule } from '../job/job.module'
+import { ProcessFileModule } from '../process-file/process-file.module'
+import { SaveCardsUsecase } from '@/domain/cards/application/usecases/save-cards'
+import { UploadController } from './controllers/cards/upload-cards-controller'
 
 @Module({
-  imports: [DatabaseModule, CryptographyModule, EnvModule],
+  imports: [
+    DatabaseModule,
+    CryptographyModule,
+    EnvModule,
+    JobModule,
+    ProcessFileModule,
+  ],
   controllers: [
     CreateUserController,
     AuthenticateUserController,
@@ -65,6 +75,7 @@ import { AuthenticateUserGoogleCallbackController } from './controllers/users/au
     UpdateStatusPurchaseController,
     AuthenticateUserGoogleController,
     AuthenticateUserGoogleCallbackController,
+    UploadController,
   ],
   providers: [
     CreateUserUseCase,
@@ -86,6 +97,7 @@ import { AuthenticateUserGoogleCallbackController } from './controllers/users/au
     PurchaseWebhookPackUseCase,
     UpdatePurchaseStatusPackUseCase,
     AuthenticateUserGoogleUsecase,
+    SaveCardsUsecase,
   ],
 })
 export class HttpModule {}
