@@ -4,7 +4,10 @@ import { envSchema } from './infra/env/env'
 import { AuthModule } from './infra/auth/auth.module'
 import { EnvModule } from './infra/env/env.module'
 import { HttpModule } from './infra/http/http.module'
-import { PaymentModule } from './infra/payment/payment.module';
+import { PaymentModule } from './infra/payment/payment.module'
+import { JobModule } from './infra/job/job.module'
+import { BullModule } from '@nestjs/bull'
+import { ProcessFileModule } from './infra/process-file/process-file.module'
 
 @Module({
   imports: [
@@ -12,11 +15,17 @@ import { PaymentModule } from './infra/payment/payment.module';
       validate: (env) => envSchema.parse(env),
       isGlobal: true,
     }),
+    BullModule.forRoot({
+      redis: {
+        host: process.env.REDIS_HOST,
+        port: +process.env.REDIS_PORT,
+      },
+    }),
     AuthModule,
     HttpModule,
     EnvModule,
     PaymentModule,
-    // HealthModule,
+    ProcessFileModule,
   ],
   controllers: [],
   providers: [],
