@@ -27,6 +27,7 @@ export class AuthenticateUserGoogleCallbackController {
       name: req.user.name,
       email: req.user.email,
       password: '',
+      provider: 'google',
     })
     const result = await this.authenticateGoogleUseCase.execute(user)
 
