@@ -1,6 +1,6 @@
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { CardRepository } from '@/domain/cards/application/repositories/card-repository'
-import { Card } from '@/domain/cards/enterprise/entities/card'
+import { Card, CardProps } from '@/domain/cards/enterprise/entities/card'
 import { Process, Processor } from '@nestjs/bull'
 import { Job } from 'bull'
 
@@ -9,7 +9,7 @@ export class BullConsumer {
   constructor(private readonly cardRepository: CardRepository) {}
 
   @Process('process_file')
-  async handle(job: Job<any[]>) {
+  async handle(job: Job<CardProps[]>) {
     const cards = job.data.map((data) =>
       Card.create(
         {
@@ -27,8 +27,6 @@ export class BullConsumer {
         new UniqueEntityID(),
       ),
     )
-
-    console.log(cards)
 
     console.log(`Processing ${cards.length} cards...`)
     await this.cardRepository.saveBatch(cards)
