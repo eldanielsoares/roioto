@@ -1,11 +1,11 @@
 import { ProcessFile } from '@/domain/cards/application/process-file/process-file'
-import { Card } from '@/domain/cards/enterprise/entities/card'
+import { Card, CardProps } from '@/domain/cards/enterprise/entities/card'
 import { Injectable } from '@nestjs/common'
 import * as XLSX from 'xlsx'
 
 @Injectable()
 export class XlsxProcessFile implements ProcessFile {
-  async processFile(file: Buffer): Promise<any[]> {
+  async processFile(file: Buffer): Promise<CardProps[]> {
     const workbook = XLSX.read(file, { type: 'buffer' })
 
     const sheetName = workbook.SheetNames[0]
@@ -13,8 +13,6 @@ export class XlsxProcessFile implements ProcessFile {
 
     const jsonData = XLSX.utils.sheet_to_json(sheet)
 
-    console.log('data', jsonData)
-
-    return jsonData
+    return jsonData as CardProps[]
   }
 }
