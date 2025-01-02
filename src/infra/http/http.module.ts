@@ -47,6 +47,8 @@ import { SaveCardsUsecase } from '@/domain/cards/application/usecases/save-cards
 import { UploadCardsController } from './controllers/cards/upload-cards-controller'
 import { SaveCategoriesUsecase } from '@/domain/cards/application/usecases/save-categories'
 import { UploadCategoriesController } from './controllers/cards/upload-categories-controller'
+import { UploadDecksController } from './controllers/cards/upload-deck-controller'
+import { SaveDecksUsecase } from '@/domain/cards/application/usecases/save-decks'
 
 @Module({
   imports: [
@@ -79,6 +81,7 @@ import { UploadCategoriesController } from './controllers/cards/upload-categorie
     AuthenticateUserGoogleCallbackController,
     UploadCardsController,
     UploadCategoriesController,
+    UploadDecksController,
   ],
   providers: [
     CreateUserUseCase,
@@ -102,6 +105,7 @@ import { UploadCategoriesController } from './controllers/cards/upload-categorie
     AuthenticateUserGoogleUsecase,
     SaveCardsUsecase,
     SaveCategoriesUsecase,
+    SaveDecksUsecase,
   ],
 })
 export class HttpModule {}

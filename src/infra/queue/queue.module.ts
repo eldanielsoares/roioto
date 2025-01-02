@@ -5,8 +5,9 @@ import { BullProcessor } from './bull-processor'
 import { PrismaService } from '../database/prisma/prisma.service'
 import { DatabaseModule } from '../database/prisma/prisma.module'
 import { QueueRepository } from '@/domain/cards/application/queue/queue'
-import { CATEGORY_QUEUE, FILE_QUEUE } from './consts/queue'
+import { CATEGORY_QUEUE, DECK_QUEUE, FILE_QUEUE } from './consts/queue'
 import { BullCategoriesConsumer } from './bull-categories-consumer'
+import { BullDecksConsumer } from './bull-decks-consumer'
 
 @Module({
   imports: [
@@ -16,6 +17,9 @@ import { BullCategoriesConsumer } from './bull-categories-consumer'
     BullModule.registerQueue({
       name: CATEGORY_QUEUE,
     }),
+    BullModule.registerQueue({
+      name: DECK_QUEUE,
+    }),
     DatabaseModule,
   ],
   controllers: [],
@@ -23,6 +27,7 @@ import { BullCategoriesConsumer } from './bull-categories-consumer'
     PrismaService,
     BullCardsConsumer,
     BullCategoriesConsumer,
+    BullDecksConsumer,
     BullProcessor,
     { provide: QueueRepository, useClass: BullProcessor },
   ],
@@ -31,6 +36,7 @@ import { BullCategoriesConsumer } from './bull-categories-consumer'
     BullProcessor,
     QueueRepository,
     BullCategoriesConsumer,
+    BullDecksConsumer,
   ],
 })
 export class QueueModule {}

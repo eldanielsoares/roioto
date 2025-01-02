@@ -17,9 +17,10 @@ import { Payment } from '@/domain/user/application/payments/payment'
 import { Payments } from '@/infra/payment/payments'
 import { CardRepository } from '@/domain/cards/application/repositories/card-repository'
 import { PrismaCardRepository } from './repositories/prisma-cards-repository'
-import { SeedService } from './seed.service'
 import { CategoryRepository } from '@/domain/cards/application/repositories/category-repository'
 import { PrismaCategoryRepository } from './repositories/prisma-category-repository'
+import { DeckRepository } from '@/domain/cards/application/repositories/deck-repository'
+import { PrismaDeckRepository } from './repositories/prisma-deck-repository'
 
 @Module({
   imports: [],
@@ -48,6 +49,10 @@ import { PrismaCategoryRepository } from './repositories/prisma-category-reposit
       provide: CategoryRepository,
       useClass: PrismaCategoryRepository,
     },
+    {
+      provide: DeckRepository,
+      useClass: PrismaDeckRepository,
+    },
   ],
   exports: [
     PrismaService,
@@ -61,6 +66,7 @@ import { PrismaCategoryRepository } from './repositories/prisma-category-reposit
     Payment,
     CardRepository,
     CategoryRepository,
+    DeckRepository,
   ],
 })
 export class DatabaseModule {}
