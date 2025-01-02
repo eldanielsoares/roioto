@@ -41,7 +41,7 @@ import { UpdateStatusPurchaseController } from './controllers/users/update-purch
 import { AuthenticateUserGoogleController } from './controllers/users/authenticate-user-google'
 import { AuthenticateUserGoogleUsecase } from '@/domain/user/application/usecases/authenticate-user-google'
 import { AuthenticateUserGoogleCallbackController } from './controllers/users/authenticate-user-google-callback'
-import { JobModule } from '../job/job.module'
+import { QueueModule } from '../queue/queue.module'
 import { ProcessFileModule } from '../process-file/process-file.module'
 import { SaveCardsUsecase } from '@/domain/cards/application/usecases/save-cards'
 import { UploadController } from './controllers/cards/upload-cards-controller'
@@ -51,7 +51,7 @@ import { UploadController } from './controllers/cards/upload-cards-controller'
     DatabaseModule,
     CryptographyModule,
     EnvModule,
-    JobModule,
+    QueueModule,
     ProcessFileModule,
   ],
   controllers: [

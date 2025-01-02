@@ -5,9 +5,9 @@ import { AuthModule } from './infra/auth/auth.module'
 import { EnvModule } from './infra/env/env.module'
 import { HttpModule } from './infra/http/http.module'
 import { PaymentModule } from './infra/payment/payment.module'
-import { JobModule } from './infra/job/job.module'
 import { BullModule } from '@nestjs/bull'
 import { ProcessFileModule } from './infra/process-file/process-file.module'
+import { QueueModule } from './infra/queue/queue.module'
 
 @Module({
   imports: [
@@ -25,6 +25,7 @@ import { ProcessFileModule } from './infra/process-file/process-file.module'
     HttpModule,
     EnvModule,
     PaymentModule,
+    QueueModule,
     ProcessFileModule,
   ],
   controllers: [],

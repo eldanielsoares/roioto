@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common'
-import { CardJob } from '../jobs/card-job'
+import { CardQueue } from '../queue/card-queue'
 import { ProcessFile } from '../process-file/process-file'
 
 @Injectable()
 export class SaveCardsUsecase {
   constructor(
-    private cardJob: CardJob,
+    private CardQueue: CardQueue,
     private processFileRepository: ProcessFile,
   ) {}
 
   async execute(data: Buffer): Promise<void> {
     const cards = await this.processFileRepository.processFile(data)
 
-    return this.cardJob.add(cards)
+    return this.CardQueue.add(cards)
   }
 }

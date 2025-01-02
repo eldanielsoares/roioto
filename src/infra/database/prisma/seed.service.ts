@@ -21,8 +21,8 @@ export class SeedService implements OnModuleInit {
   }
 
   async seed() {
-    // await this.seedcategories()
-    // await this.seedDecks()
+    await this.seedcategories()
+    await this.seedDecks()
   }
 
   private async seedcategories() {

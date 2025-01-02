@@ -3,12 +3,13 @@ import { CardRepository } from '@/domain/cards/application/repositories/card-rep
 import { Card, CardProps } from '@/domain/cards/enterprise/entities/card'
 import { Process, Processor } from '@nestjs/bull'
 import { Job } from 'bull'
+import { FILE_QUEUE, FILE_QUEUE_CONSUMER } from './consts/queue'
 
-@Processor('process_file_job')
+@Processor(FILE_QUEUE)
 export class BullConsumer {
   constructor(private readonly cardRepository: CardRepository) {}
 
-  @Process('process_file')
+  @Process(FILE_QUEUE_CONSUMER)
   async handle(job: Job<CardProps[]>) {
     const cards = job.data.map((data) =>
       Card.create(

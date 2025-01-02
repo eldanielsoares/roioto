@@ -17,14 +17,13 @@ import { Payment } from '@/domain/user/application/payments/payment'
 import { Payments } from '@/infra/payment/payments'
 import { CardRepository } from '@/domain/cards/application/repositories/card-repository'
 import { PrismaCardRepository } from './repositories/prisma-cards-repository'
-import { BullConsumer } from '@/infra/job/bull-consumer'
 import { SeedService } from './seed.service'
 
 @Module({
   imports: [],
   providers: [
     PrismaService,
-    SeedService,
+    // SeedService,
     EnvService,
     { provide: UsersRepository, useClass: PrismaUsersRepository },
     { provide: UserCardsRepository, useClass: PrismaUserCardsRepository },

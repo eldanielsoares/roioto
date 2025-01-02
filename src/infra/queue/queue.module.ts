@@ -2,16 +2,15 @@ import { Module } from '@nestjs/common'
 import { BullModule } from '@nestjs/bull'
 import { BullConsumer } from './bull-consumer'
 import { BullProcessor } from './bull-processor'
-import { CardRepository } from '@/domain/cards/application/repositories/card-repository'
-import { PrismaCardRepository } from '../database/prisma/repositories/prisma-cards-repository'
 import { PrismaService } from '../database/prisma/prisma.service'
 import { DatabaseModule } from '../database/prisma/prisma.module'
-import { CardJob } from '@/domain/cards/application/jobs/card-job'
+import { CardQueue } from '@/domain/cards/application/queue/card-queue'
+import { FILE_QUEUE } from './consts/queue'
 
 @Module({
   imports: [
     BullModule.registerQueue({
-      name: 'process_file_job',
+      name: FILE_QUEUE,
     }),
     DatabaseModule,
   ],
@@ -20,8 +19,8 @@ import { CardJob } from '@/domain/cards/application/jobs/card-job'
     PrismaService,
     BullConsumer,
     BullProcessor,
-    { provide: CardJob, useClass: BullProcessor },
+    { provide: CardQueue, useClass: BullProcessor },
   ],
-  exports: [BullConsumer, BullProcessor, CardJob],
+  exports: [BullConsumer, BullProcessor, CardQueue],
 })
-export class JobModule {}
+export class QueueModule {}
