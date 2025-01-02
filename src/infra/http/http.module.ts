@@ -38,6 +38,9 @@ import { ProcessPaymentController } from './controllers/users/process-payment-co
 import { ProcessPaymentWebhookController } from './controllers/users/process-payment-webhook-controller'
 import { UpdatePurchaseStatusPackUseCase } from '@/domain/user/application/usecases/update-purchase-status-pack'
 import { UpdateStatusPurchaseController } from './controllers/users/update-purchase-status-controller'
+import { AuthenticateUserGoogleController } from './controllers/users/authenticate-user-google'
+import { AuthenticateUserGoogleUsecase } from '@/domain/user/application/usecases/authenticate-user-google'
+import { AuthenticateUserGoogleCallbackController } from './controllers/users/authenticate-user-google-callback'
 
 @Module({
   imports: [DatabaseModule, CryptographyModule, EnvModule],
@@ -60,6 +63,8 @@ import { UpdateStatusPurchaseController } from './controllers/users/update-purch
     ProcessPaymentController,
     ProcessPaymentWebhookController,
     UpdateStatusPurchaseController,
+    AuthenticateUserGoogleController,
+    AuthenticateUserGoogleCallbackController,
   ],
   providers: [
     CreateUserUseCase,
@@ -80,6 +85,7 @@ import { UpdateStatusPurchaseController } from './controllers/users/update-purch
     ProcessPaymentUseCase,
     PurchaseWebhookPackUseCase,
     UpdatePurchaseStatusPackUseCase,
+    AuthenticateUserGoogleUsecase,
   ],
 })
 export class HttpModule {}
