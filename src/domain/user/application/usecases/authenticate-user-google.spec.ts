@@ -41,6 +41,8 @@ describe('Authenticate User Google Use Case', () => {
       provider: 'google',
     })
 
+    console.log(mockUser)
+
     const result = await sut.execute(mockUser)
 
     const { accessToken } = result.value as { accessToken: string }
