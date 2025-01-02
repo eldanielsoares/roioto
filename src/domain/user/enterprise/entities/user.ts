@@ -7,6 +7,7 @@ export type UserProps = {
   email: string
   password: string
   level?: number
+  provider?: string
   createdAt?: Date
   updatedAt?: Date
 }
@@ -26,6 +27,10 @@ export class User extends AggregateRoot<UserProps> {
 
   get level() {
     return this.props.level
+  }
+
+  get provider() {
+    return this.props.provider
   }
 
   get createdAt() {
