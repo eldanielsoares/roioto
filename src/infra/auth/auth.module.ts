@@ -6,6 +6,7 @@ import { JwtStrategy } from './jwt.strategy'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { EnvService } from '../env/env.service'
 import { EnvModule } from '../env/env.module'
+import { GoogleStrategy } from './google.strategy'
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { EnvModule } from '../env/env.module'
   ],
   providers: [
     JwtStrategy,
+    GoogleStrategy,
     EnvService,
     {
       provide: APP_GUARD,
