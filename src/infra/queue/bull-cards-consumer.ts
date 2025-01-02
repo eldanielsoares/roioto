@@ -6,7 +6,7 @@ import { Job } from 'bull'
 import { FILE_QUEUE, FILE_QUEUE_CONSUMER } from './consts/queue'
 
 @Processor(FILE_QUEUE)
-export class BullConsumer {
+export class BullCardsConsumer {
   constructor(private readonly cardRepository: CardRepository) {}
 
   @Process(FILE_QUEUE_CONSUMER)

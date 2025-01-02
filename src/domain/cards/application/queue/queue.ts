@@ -1,3 +1,3 @@
-export abstract class Queue {
-  abstract add<T>(data: T[]): Promise<void>
+export abstract class QueueRepository {
+  abstract add<T>(queueName: string, data: T[]): Promise<void>
 }

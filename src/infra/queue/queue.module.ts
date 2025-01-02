@@ -1,26 +1,29 @@
 import { Module } from '@nestjs/common'
 import { BullModule } from '@nestjs/bull'
-import { BullConsumer } from './bull-consumer'
+import { BullCardsConsumer } from './bull-cards-consumer'
 import { BullProcessor } from './bull-processor'
 import { PrismaService } from '../database/prisma/prisma.service'
 import { DatabaseModule } from '../database/prisma/prisma.module'
-import { Queue } from '@/domain/cards/application/queue/queue'
-import { FILE_QUEUE } from './consts/queue'
+import { QueueRepository } from '@/domain/cards/application/queue/queue'
+import { CATEGORY_QUEUE, FILE_QUEUE } from './consts/queue'
 
 @Module({
   imports: [
     BullModule.registerQueue({
       name: FILE_QUEUE,
     }),
+    BullModule.registerQueue({
+      name: CATEGORY_QUEUE,
+    }),
     DatabaseModule,
   ],
   controllers: [],
   providers: [
     PrismaService,
-    BullConsumer,
+    BullCardsConsumer,
     BullProcessor,
-    { provide: Queue, useClass: BullProcessor },
+    { provide: QueueRepository, useClass: BullProcessor },
   ],
-  exports: [BullConsumer, BullProcessor, Queue],
+  exports: [BullCardsConsumer, BullProcessor, QueueRepository],
 })
 export class QueueModule {}
