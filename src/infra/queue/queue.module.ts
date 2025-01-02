@@ -6,6 +6,7 @@ import { PrismaService } from '../database/prisma/prisma.service'
 import { DatabaseModule } from '../database/prisma/prisma.module'
 import { QueueRepository } from '@/domain/cards/application/queue/queue'
 import { CATEGORY_QUEUE, FILE_QUEUE } from './consts/queue'
+import { BullCategoriesConsumer } from './bull-categories-consumer'
 
 @Module({
   imports: [
@@ -21,9 +22,15 @@ import { CATEGORY_QUEUE, FILE_QUEUE } from './consts/queue'
   providers: [
     PrismaService,
     BullCardsConsumer,
+    BullCategoriesConsumer,
     BullProcessor,
     { provide: QueueRepository, useClass: BullProcessor },
   ],
-  exports: [BullCardsConsumer, BullProcessor, QueueRepository],
+  exports: [
+    BullCardsConsumer,
+    BullProcessor,
+    QueueRepository,
+    BullCategoriesConsumer,
+  ],
 })
 export class QueueModule {}
