@@ -14,14 +14,14 @@ import { LinkUserCardsToUserUseCase } from '@/domain/user/application/usecases/l
 import { LinkUserCardsController } from './controllers/users/link-user-cards-controller'
 import { GetUserCardsController } from './controllers/users/get-user-cards-controller'
 import { GetUserCardsByUserIdAndDeckIdUseCase } from '@/domain/user/application/usecases/get-user-cards-by-user-id'
-import { CreatePacksController } from './controllers/packs/create-pack-controller'
+import { CreatePacksController } from './controllers/packs/admin/create-pack-controller'
 import { CreatePackUseCase } from '@/domain/pack/application/usecases/create-pack'
 import { FindPackByIdController } from './controllers/packs/find-pack-by-id-controller'
 import { FindAllPacksController } from './controllers/packs/find-all-pack-controller'
 import { FindAllPacksUseCase } from '@/domain/pack/application/usecases/find-all-packs'
 import { FindByIdPackUseCase } from '@/domain/pack/application/usecases/find-pack-by-id'
 import { DeletePackUseCase } from '@/domain/pack/application/usecases/delete-pack'
-import { DeletePackByIdController } from './controllers/packs/delete-pack-by-id-controller'
+import { DeletePackByIdController } from './controllers/packs/admin/delete-pack-by-id-controller'
 import { CreateMatchController } from './controllers/users/create-match-controller'
 import { UpdateMatchShotsController } from './controllers/users/update-shot-match-controller'
 import { FindMatchByIdController } from './controllers/users/find-match-by-id-controller'
@@ -44,11 +44,13 @@ import { AuthenticateUserGoogleCallbackController } from './controllers/users/au
 import { QueueModule } from '../queue/queue.module'
 import { ProcessFileModule } from '../process-file/process-file.module'
 import { SaveCardsUsecase } from '@/domain/cards/application/usecases/save-cards'
-import { UploadCardsController } from './controllers/cards/upload-cards-controller'
+import { UploadCardsController } from './controllers/cards/admin/upload-cards-controller'
 import { SaveCategoriesUsecase } from '@/domain/cards/application/usecases/save-categories'
-import { UploadCategoriesController } from './controllers/cards/upload-categories-controller'
-import { UploadDecksController } from './controllers/cards/upload-deck-controller'
+import { UploadCategoriesController } from './controllers/cards/admin/upload-categories-controller'
+import { UploadDecksController } from './controllers/cards/admin/upload-deck-controller'
 import { SaveDecksUsecase } from '@/domain/cards/application/usecases/save-decks'
+import { UpdateUserRoleController } from './controllers/users/admin/update-user-role-controller'
+import { UpdateUserRoleUseCase } from '@/domain/user/application/usecases/update-user-role'
 
 @Module({
   imports: [
@@ -82,6 +84,7 @@ import { SaveDecksUsecase } from '@/domain/cards/application/usecases/save-decks
     UploadCardsController,
     UploadCategoriesController,
     UploadDecksController,
+    UpdateUserRoleController,
   ],
   providers: [
     CreateUserUseCase,
@@ -106,6 +109,7 @@ import { SaveDecksUsecase } from '@/domain/cards/application/usecases/save-decks
     SaveCardsUsecase,
     SaveCategoriesUsecase,
     SaveDecksUsecase,
+    UpdateUserRoleUseCase,
   ],
 })
 export class HttpModule {}
