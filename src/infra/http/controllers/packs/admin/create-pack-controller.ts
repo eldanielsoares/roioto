@@ -4,12 +4,14 @@ import {
   ConflictException,
   Controller,
   Post,
+  UseGuards,
 } from '@nestjs/common'
 import { z } from 'zod'
-import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
+import { ZodValidationPipe } from '../../../pipes/zod-validation-pipe'
 import { CreatePackUseCase } from '@/domain/pack/application/usecases/create-pack'
 import { SomethingGoesWrongError } from '@/domain/user/application/usecases/errors/something-goes-wrong'
-import { PackPresenter } from '../../presenters/pack-presenter'
+import { PackPresenter } from '../../../presenters/pack-presenter'
+import { AdminGuard } from '@/infra/auth/admin.guard'
 
 const createpackBodySchema = z.object({
   name: z.string(),
@@ -23,6 +25,7 @@ type CreatePackBodySchema = z.infer<typeof createpackBodySchema>
 export class CreatePacksController {
   constructor(private createPack: CreatePackUseCase) {}
 
+  @UseGuards(AdminGuard)
   @Post()
   async handle(
     @Body(new ZodValidationPipe(createpackBodySchema))
