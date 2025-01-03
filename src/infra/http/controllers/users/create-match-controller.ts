@@ -1,13 +1,6 @@
-import {
-  BadRequestException,
-  Body,
-  ConflictException,
-  Controller,
-  Post,
-} from '@nestjs/common'
+import { BadRequestException, Body, Controller, Post } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../../pipes/zod-validation-pipe'
-import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
 import { CreateMatchUseCase } from '@/domain/user/application/usecases/create-match'
 import { MatchPresenter } from '../../presenters/match-presenter'
 import { CurrentUser } from '@/infra/auth/current-user.decorator'
