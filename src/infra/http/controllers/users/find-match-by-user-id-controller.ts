@@ -1,10 +1,4 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Controller,
-  Get,
-} from '@nestjs/common'
-import { UserAlreadyExistsError } from '@/domain/user/application/usecases/errors/user-already-exists-error'
+import { BadRequestException, Controller, Get } from '@nestjs/common'
 import { MatchPresenter } from '../../presenters/match-presenter'
 import { CurrentUser } from '@/infra/auth/current-user.decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
