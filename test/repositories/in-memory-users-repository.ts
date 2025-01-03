@@ -48,4 +48,17 @@ export class InMemoryUsersRepository implements UsersRepository {
 
     this.items.splice(itemIndex, 1)
   }
+
+  async updateUserRole(id: string, role: string): Promise<void> {
+    const itemIndex = this.items.findIndex((item) => item.id.toString() === id)
+
+    if (itemIndex !== -1) return
+
+    const { name, email, password } = this.items[itemIndex]
+
+    this.items[itemIndex] = User.create(
+      { name, email, password, role },
+      new UniqueEntityID(id),
+    )
+  }
 }
