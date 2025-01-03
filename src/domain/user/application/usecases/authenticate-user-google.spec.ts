@@ -30,6 +30,7 @@ describe('Authenticate User Google Use Case', () => {
       email: 'john.doe@gmail.com',
       password: await fakeHasher.hash(''),
       provider: 'google',
+      role: 'USER',
     })
 
     inMemoryUsersRepository.items.push(user)
@@ -40,8 +41,6 @@ describe('Authenticate User Google Use Case', () => {
       password: '',
       provider: 'google',
     })
-
-    console.log(mockUser)
 
     const result = await sut.execute(mockUser)
 
@@ -56,6 +55,7 @@ describe('Authenticate User Google Use Case', () => {
       name: 'John Doe',
       email: 'john.doe@gmail.com',
       password: await fakeHasher.hash(''),
+      role: 'USER',
     })
 
     inMemoryUsersRepository.items.push(user)
@@ -77,6 +77,7 @@ describe('Authenticate User Google Use Case', () => {
       email: 'john.doe@gmail.com',
       password: await fakeHasher.hash(''),
       provider: 'google',
+      role: 'USER',
     })
 
     inMemoryUsersRepository.items.push(user)

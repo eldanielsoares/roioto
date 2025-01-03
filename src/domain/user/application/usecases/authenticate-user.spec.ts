@@ -37,6 +37,7 @@ describe('Autenticate User', () => {
     const user = makeUser({
       email: 'john.doe@example.com',
       password: await fakeHasher.hash('password'),
+      role: 'USER',
     })
 
     inMemoryUsersRepository.items.push(user)
@@ -54,6 +55,7 @@ describe('Autenticate User', () => {
     const user = makeUser({
       email: 'john.doe@example.com',
       password: await fakeHasher.hash('password123'),
+      role: 'USER',
     })
 
     inMemoryUsersRepository.items.push(user)
