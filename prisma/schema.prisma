@@ -19,6 +19,7 @@ model User {
   name      String
   email     String     @unique
   password  String
+  role      String
   createdAt DateTime   @default(now()) @map("created_at")
   updatedAt DateTime   @updatedAt @map("updated_at")
   level     Int        @default(1)
