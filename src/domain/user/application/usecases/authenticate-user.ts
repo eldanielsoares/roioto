@@ -42,7 +42,7 @@ export class AuthenticateUserUseCase {
 
     const accessToken = await this.encryption.encrypt(
       {
-        sub: { userId: user.id.toString() },
+        sub: { userId: user.id.toString(), role: user.role.toString() },
       },
       { expiresIn: '1d' },
     )

@@ -14,6 +14,11 @@ type AuthenticateUserResponse = Either<
   }
 >
 
+const roles = {
+  USER: 'USER',
+  ADMIN: 'ADMIN',
+}
+
 @Injectable()
 export class AuthenticateUserGoogleUsecase {
   constructor(
@@ -30,7 +35,10 @@ export class AuthenticateUserGoogleUsecase {
     }
 
     return right({
-      accessToken: await this.generateAccessToken(user.id.toString()),
+      accessToken: await this.generateAccessToken(
+        user.id.toString(),
+        user.role,
+      ),
     })
   }
 
@@ -43,6 +51,7 @@ export class AuthenticateUserGoogleUsecase {
         email: data.email,
         password: await this.hasher.hash(new UniqueEntityID().toString()),
         provider: 'google',
+        role: roles.USER,
       })
       return await this.usersRepository.create(newUser)
     }
@@ -50,10 +59,14 @@ export class AuthenticateUserGoogleUsecase {
     return userExists
   }
 
-  private async generateAccessToken(userId: string): Promise<string> {
+  private async generateAccessToken(
+    userId: string,
+    role: string,
+  ): Promise<string> {
     return this.encryption.encrypt(
       {
         sub: { userId },
+        role,
       },
       { expiresIn: '1d' },
     )
