@@ -23,6 +23,19 @@ Content-Type: application/json
   "password": "12345678"
 }
 
+###
+
+// USER
+# @name authenticate
+PUT {{baseUrl}}/admin/user
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "userId": "01JGP36KY9W1S69Z56QD0W51DR",
+  "role": "USER"
+}
+
 
 ###
 
