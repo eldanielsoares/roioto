@@ -49,4 +49,8 @@ export class PrismaUsersRepository implements UsersRepository {
 
     return PrismaUserMapper.toDomain(user)
   }
+
+  async updateUserRole(id: string, role: string): Promise<void> {
+    await this.prisma.user.update({ where: { id }, data: { role } })
+  }
 }
