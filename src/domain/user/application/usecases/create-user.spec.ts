@@ -68,6 +68,7 @@ describe('Create User', () => {
       name: 'John Doe',
       email: 'john.doe@example.com',
       password: await fakeHasher.hash('123456'),
+      role: 'USER',
     })
 
     inMemoryUsersRepository.items.push(user)
