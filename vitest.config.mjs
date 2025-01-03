@@ -7,6 +7,11 @@ export default defineConfig({
     globals: true,
     root: './',
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   plugins: [
     tsConfigPaths(),
     swc.vite({
