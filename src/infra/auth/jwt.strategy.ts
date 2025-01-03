@@ -7,6 +7,7 @@ import { EnvService } from '../env/env.service'
 const tokenPayloadSchema = z.object({
   sub: z.object({
     userId: z.string().ulid(),
+    role: z.string(),
   }),
 })
 
