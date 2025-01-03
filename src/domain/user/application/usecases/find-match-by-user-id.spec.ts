@@ -1,6 +1,5 @@
 import { InMemoryMatchesRepository } from 'test/repositories/in-memory-matches-repository'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { SomethingGoesWrongError } from './errors/something-goes-wrong'
 import { makeMatch } from 'test/factories/make-match'
 import { Match } from '../../enterprise/entities/match'
 import { FindMatchByUserIdUseCase } from './find-match-by-userId'
