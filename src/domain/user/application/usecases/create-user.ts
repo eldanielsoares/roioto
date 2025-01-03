@@ -12,6 +12,11 @@ interface CreateUserUseCaseRequest {
   password: string
 }
 
+const roles = {
+  USER: 'USER',
+  ADMIN: 'ADMIN',
+}
+
 type CreateUserUseCaseResponse = Either<
   UserAlreadyExistsError,
   {
@@ -45,13 +50,14 @@ export class CreateUserUseCase {
       name,
       email,
       password: hashedPassword,
+      role: roles.USER,
     })
 
     const savedUser = await this.usersRepository.create(user)
 
     const accessToken = await this.encryption.encrypt(
       {
-        sub: { userId: user.id.toString() },
+        sub: { userId: user.id.toString(), role: user?.role?.toString() },
       },
       { expiresIn: '1d' },
     )
