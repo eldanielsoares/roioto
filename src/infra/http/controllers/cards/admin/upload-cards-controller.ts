@@ -17,6 +17,8 @@ export class UploadCardsController {
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.saveCardsUseCase.execute(file.buffer)
+    await this.saveCardsUseCase.execute(file.buffer)
+
+    return { message: 'file successfully uploaded.' }
   }
 }

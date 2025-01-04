@@ -17,6 +17,7 @@ export class UploadDecksController {
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.saveDecksUseCase.execute(file.buffer)
+    await this.saveDecksUseCase.execute(file.buffer)
+    return { message: 'file successfully uploaded.' }
   }
 }

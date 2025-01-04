@@ -17,6 +17,8 @@ export class UploadCategoriesController {
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
-    return this.saveCategoriesUseCase.execute(file.buffer)
+    await this.saveCategoriesUseCase.execute(file.buffer)
+
+    return { message: 'file successfully uploaded.' }
   }
 }
