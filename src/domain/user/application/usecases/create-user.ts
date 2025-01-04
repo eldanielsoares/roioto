@@ -51,7 +51,7 @@ export class CreateUserUseCase {
 
     const accessToken = await this.encryption.encrypt(
       {
-        sub: { userId: user.id.toString(), role: user?.role },
+        sub: { userId: savedUser.id.toString(), role: savedUser?.role },
       },
       { expiresIn: '1d' },
     )
