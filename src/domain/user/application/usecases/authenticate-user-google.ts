@@ -14,11 +14,6 @@ type AuthenticateUserResponse = Either<
   }
 >
 
-const roles = {
-  USER: 'USER',
-  ADMIN: 'ADMIN',
-}
-
 @Injectable()
 export class AuthenticateUserGoogleUsecase {
   constructor(
@@ -51,7 +46,6 @@ export class AuthenticateUserGoogleUsecase {
         email: data.email,
         password: await this.hasher.hash(new UniqueEntityID().toString()),
         provider: 'google',
-        role: roles.USER,
       })
       return await this.usersRepository.create(newUser)
     }
