@@ -8,6 +8,7 @@ import { PaymentModule } from './infra/payment/payment.module'
 import { BullModule } from '@nestjs/bull'
 import { ProcessFileModule } from './infra/process-file/process-file.module'
 import { QueueModule } from './infra/queue/queue.module'
+import { ThrottlerModule } from '@nestjs/throttler'
 
 @Module({
   imports: [
@@ -21,6 +22,12 @@ import { QueueModule } from './infra/queue/queue.module'
         port: +process.env.REDIS_PORT,
       },
     }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000,
+        limit: 20,
+      },
+    ]),
     AuthModule,
     HttpModule,
     EnvModule,
