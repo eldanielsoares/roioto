@@ -15,6 +15,7 @@ export class BullDecksConsumer {
       Deck.create(
         {
           name: data.name,
+          image: data.image,
           updatedAt: new Date(),
         },
         new UniqueEntityID(),

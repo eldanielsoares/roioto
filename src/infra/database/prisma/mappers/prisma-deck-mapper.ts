@@ -7,6 +7,7 @@ export class PrismaDeckMapper {
     return Deck.create(
       {
         name: raw.name,
+        image: raw.image,
         createdAt: raw.createdAt,
         updatedAt: raw.updatedAt,
       },
@@ -18,6 +19,7 @@ export class PrismaDeckMapper {
     return {
       id: deck.id.toString(),
       name: deck.name,
+      image: deck.image,
       createdAt: deck.createdAt,
       updatedAt: deck.updatedAt,
     }

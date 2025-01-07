@@ -4,6 +4,7 @@ import { Optional } from '@prisma/client/runtime/library'
 
 export type DeckProps = {
   name: string
+  image: string
   createdAt?: Date
   updatedAt?: Date
 }
@@ -11,6 +12,10 @@ export type DeckProps = {
 export class Deck extends AggregateRoot<DeckProps> {
   get name() {
     return this.props.name
+  }
+
+  get image() {
+    return this.props.image
   }
 
   get createdAt() {
